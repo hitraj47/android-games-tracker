@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.bewareofraj.gamestracker"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "$dependencies_versions.android.jetpack_compose"
+        kotlinCompilerVersion "$dependencies_versions.kotlin.kotlin_compiler"
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$dependencies_versions.kotlin.version"
+    implementation "androidx.core:core-ktx:$dependencies_versions.kotlin.core_ktx"
+    implementation "androidx.appcompat:appcompat:$dependencies_versions.android.appcompat"
+    implementation "com.google.android.material:material:$dependencies_versions.android.material"
+    implementation "androidx.compose.ui:ui:$dependencies_versions.android.jetpack_compose"
+    implementation "androidx.compose.material:material:$dependencies_versions.android.jetpack_compose"
+    implementation "androidx.compose.ui:ui-tooling:$dependencies_versions.android.jetpack_compose"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$dependencies_versions.android.lifecycle"
+    implementation "androidx.activity:activity-compose:$dependencies_versions.android.activity_compose"
+    testImplementation "junit:junit:$dependencies_versions.testing.junit"
+    androidTestImplementation "androidx.test.ext:junit:$dependencies_versions.testing.androidx_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$dependencies_versions.testing.espresso"
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation "androidx.compose.foundation:foundation:$dependencies_versions.android.jetpack_compose"
+    // Material design icons
+    implementation "androidx.compose.material:material-icons-core:$dependencies_versions.android.jetpack_compose"
+    implementation "androidx.compose.material:material-icons-extended:$dependencies_versions.android.jetpack_compose"
+    // Integration with ViewModels
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$dependencies_versions.android.lifecycle_compose"
+    // Integration with observables
+    implementation "androidx.compose.runtime:runtime-livedata:$dependencies_versions.android.compose_livedata"
+    implementation "androidx.compose.runtime:runtime-rxjava2:$dependencies_versions.android.compose_rxjava"
+}
